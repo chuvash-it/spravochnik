@@ -108,10 +108,12 @@ def delete_contact():
     patronymic = input('Введите отчество записи, котрую нужно удалить: ')
     with open("phonebook.txt", 'r+', encoding='utf-8') as file:
         lines = file.read().rstrip().split("\n\n")
+        file.truncate(0)
         for line in lines:
             if surname.title() not in line and name.title() not in line and patronymic.title() not in line:
                 file.write(line)
             print()
+        print()
 
 
 def change_contact():
@@ -121,12 +123,14 @@ def change_contact():
     new_contact = input_data()
     with open("phonebook.txt","r+",encoding="utf-8") as file:
         lines = file.read().rstrip().split("\n\n")
+        file.truncate(0)
         for line in lines:
             if surname.title() in line and name.title() in line and patronymic.title() in line:
                 file.write(new_contact)
             else:
                 file.write(line)
             print()
+        print()
 
 
 
